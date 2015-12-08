@@ -73,6 +73,6 @@ public class City {
     }
 
     public String toString(){
-        return "\n" + name +", ID = "+ getId() +"\n------------------------\n"+ getSundata() +"\n"+ getWetherDes() +"\n"+ getWetherData() +"\n"+ getWinData() +"\n"+ getClouds();
+        return "\n" + name +", ID = "+ getId() +"\n------------------------\n" + getCoords() + "\n" + getSundata() +"\n"+ getWetherDes() +"\n"+ getWetherData() +"\n"+ getWinData() +"\n"+ getClouds();
     }
 }

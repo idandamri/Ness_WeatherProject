@@ -36,7 +36,7 @@ public class Main {
             String s = scanner.nextLine();
              choice= Integer.parseInt(s);
         }catch(NumberFormatException ex){
-            System.out.println("\nERORR:\nYou entered something that is not a number!!!\n");
+            System.out.println("\nERROR:\nYou entered something that is not a number!!!\n");
         }
         return choice;
     }

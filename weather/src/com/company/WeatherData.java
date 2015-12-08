@@ -5,7 +5,7 @@ import org.json.simple.JSONObject;
 public class WeatherData {
 
     private double temp;
-    private long pressure;
+    private double pressure;
     private long humidity;
     private double temp_min;
     private double temp_max;
@@ -14,7 +14,7 @@ public class WeatherData {
 
     public WeatherData(JSONObject main) {
         this.temp = (double)main.get("temp");
-        this.pressure = (long)main.get("pressure");
+        this.pressure = (double)main.get("pressure");
         this.humidity = (long)main.get("humidity");
         this.temp_min = (double)main.get("temp_min");
         this.temp_max = (double)main.get("temp_max");
@@ -26,7 +26,7 @@ public class WeatherData {
         return temp;
     }
 
-    public long getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
