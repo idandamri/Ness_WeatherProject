@@ -14,7 +14,8 @@ public class Main {
             if(choice == 2)
                 break;//quit
             if(choice == 1) handleToCities(menu);
-            else{// a choice that is not in the menu
+            else{
+                // a choice that is not in the menu
                 System.out.println("\nYou choose badly.\nChose again please:");
                 menu.print_first_menu();
             }
