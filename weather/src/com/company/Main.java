@@ -33,7 +33,7 @@ public class Main {
         int choice = -1;
         Scanner scanner = new Scanner(System.in);
         try {
-            String s = scanner.nextLine();
+            String s = Integer.toString(scanner.nextInt());
              choice= Integer.parseInt(s);
         }catch(NumberFormatException ex){
             System.out.println("\nERROR:\nYou entered something that is not a number!!!\n");

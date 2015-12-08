@@ -8,9 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by idan on 19/11/2015.
- */
 public class HTTPHandler {
 
     public String getUrl(String address) {
