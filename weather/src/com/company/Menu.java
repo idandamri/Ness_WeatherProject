@@ -2,50 +2,21 @@ package com.company;
 
 import org.json.simple.JSONObject;
 
+import java.util.Scanner;
+
 public class Menu {
 
     int num_of_choices;
     WeatherManager wm;
-    String[] citiesJsonToString = new String[10];
-    JSONObject[] citeisJsons = new JSONObject[10];
+    static String[] citiesJsonToString = new String[10];
+    static JSONObject[] citesJson = new JSONObject[10];
 
     public Menu(int num_of_choices) {
         this.num_of_choices = num_of_choices;
         wm = new WeatherManager();
-        jsonToArray();
-        updateCitiesFromUrl();
-    }
-
-
-    private void jsonToArray(){
-        try {
-            citeisJsons[0] = TParse.readJsonFromUrl(CitiesEName.BEERSHEBA);
-            citeisJsons[1] = TParse.readJsonFromUrl(CitiesEName.HAIFA);
-            citeisJsons[2] = TParse.readJsonFromUrl(CitiesEName.TELAVIV);
-            citeisJsons[3] = TParse.readJsonFromUrl(CitiesEName.NEWYORK);
-            citeisJsons[4] = TParse.readJsonFromUrl(CitiesEName.MADRID);
-            citeisJsons[5] = TParse.readJsonFromUrl(CitiesEName.BARCELONA);
-            citeisJsons[6] = TParse.readJsonFromUrl(CitiesEName.ROME);
-            citeisJsons[7] = TParse.readJsonFromUrl(CitiesEName.PARIS);
-            citeisJsons[8] = TParse.readJsonFromUrl(CitiesEName.LONDON);
-            citeisJsons[9] = TParse.readJsonFromUrl(CitiesEName.ISTANBUL);
-        }
-        catch (Exception e) {
-            System.out.println("city json failed\n\n" + e);
-        }
-    }
-
-
-
-    private void updateCitiesFromUrl() {
-        try {
-            for (int i=0; i<10; i++) {
-                citiesJsonToString[i] = citeisJsons[i].toJSONString();
-            }
-        }
-        catch (Exception e){
-            System.out.println("city json failed\n\n"+e);
-        }
+        ThreadCityUpdate T2 = new ThreadCityUpdate("Thread-City-Update");
+        ThreadMenu.appThreads.add(T2);
+        T2.start();
     }
 
     public void print_first_menu(){
@@ -97,7 +68,7 @@ public class Menu {
                 case 10:
                     //;
                 default:
-                    City c = new City(citeisJsons[number-1]);
+                    City c = new City(citesJson[number-1]);
                     System.out.println("\n"+c+"\n\n");
                     print_first_menu();
             }

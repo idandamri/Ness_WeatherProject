@@ -10,7 +10,7 @@ import java.nio.charset.Charset;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-
+/*** This my HTTPHandler class ***/
 public class TParse {
 
     private static String readAll(Reader rd) throws IOException {

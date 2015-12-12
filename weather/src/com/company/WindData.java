@@ -15,11 +15,15 @@ public class WindData {
             speed = (long) wind.get("speed");
         }
         try{
-            deg = (double)wind.get("deg");
-        }
-        catch (ClassCastException ex){
             deg = (long)wind.get("deg");
         }
+        catch (ClassCastException ex){
+            deg = (double)wind.get("deg");
+        }
+        catch (NullPointerException nullEx){
+            deg = 0;
+        }
+
     }
 
     public double getSpeed() {
