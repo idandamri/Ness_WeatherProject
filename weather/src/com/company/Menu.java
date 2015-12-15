@@ -15,8 +15,9 @@ public class Menu {
         this.num_of_choices = num_of_choices;
         wm = new WeatherManager();
         ThreadCityUpdate T2 = new ThreadCityUpdate("Thread-City-Update");
-        ThreadMenu.appThreads.add(T2);
-        T2.start();
+        Main.executor.execute((T2));
+//        ThreadMenu.appThreads.add(T2);
+//        T2.start();
     }
 
     public void print_first_menu(){

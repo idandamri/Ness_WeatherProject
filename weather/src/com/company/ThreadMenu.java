@@ -7,12 +7,10 @@ import java.util.Scanner;
 public class ThreadMenu extends Thread {
 
     private Thread t;
-    static List<Thread> appThreads = new ArrayList<>();
     private String threadName;
 
     ThreadMenu( String name){
         threadName = name;
-        appThreads.add(this);
 //        System.out.println("Creating " +  threadName );
     }
     public void run() {
@@ -24,8 +22,10 @@ public class ThreadMenu extends Thread {
         //int choice=-1;
         while (true) {
             int choice = getNumber();
-            if (choice == 2)
+            if (choice == 2) {
+                Main.executor.shutdownNow();
                 break;//quit
+            }
             if (choice == 1) handleToCities(menu);
             else {
                 // a choice that is not in the menu
@@ -33,8 +33,6 @@ public class ThreadMenu extends Thread {
                 menu.print_first_menu();
             }
         }
-        appThreads.get(0).interrupt();
-        appThreads.get(1).interrupt();
         System.out.println("\nGood Bye...");
 //        }
 //        catch (InterruptedException e) {

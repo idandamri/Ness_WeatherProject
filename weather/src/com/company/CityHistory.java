@@ -66,23 +66,23 @@ public class CityHistory {
 
     private String readFromFile() {
         FileReader fileReader;
-        String read = "";
-        if (new File(cityName).exists()) {
-            try {
-                fileReader = new FileReader(cityName);
-                BufferedReader br = new BufferedReader(fileReader);
-                String line;
+            String read = "";
+            if (new File(cityName).exists()) {
                 try {
-                    while ((line = br.readLine()) != null) {
-                        read += line;
+                    fileReader = new FileReader(cityName);
+                    BufferedReader br = new BufferedReader(fileReader);
+                    String line;
+                    try {
+                        while ((line = br.readLine()) != null) {
+                            read += line;
+                        }
+                        br.close();
+                    } catch (IOException e) {
+                        System.out.println("Unable to read from file '" + cityName + "'");
                     }
-                    br.close();
-                } catch (IOException e) {
-                    System.out.println("Unable to read from file '" + cityName + "'");
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Unable to open file '" + cityName + "'");
                 }
-            } catch (FileNotFoundException ex) {
-                System.out.println("Unable to open file '" + cityName + "'");
-            }
         } else System.out.println("File doesn't exist!!\n");
         return read;
     }
