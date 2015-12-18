@@ -1,0 +1,6 @@
+@@@@@@@@@@
+18.12.2015
+{"dt":1450401088,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"04n","description":"broken clouds","main":"Clouds","id":803}],"name":"Beersheba","cod":200,"main":{"temp":282.693,"temp_min":282.693,"grnd_level":990.17,"humidity":95,"pressure":990.17,"sea_level":1032.33,"temp_max":282.693},"clouds":{"all":80},"id":295530,"sys":{"country":"IL","sunrise":1450413216,"sunset":1450449655,"message":0.0032},"base":"cmc stations","wind":{"deg":162.003,"speed":1.96}}
+@@@@@@@@@@
+18.12.2015
+{"dt":1450401088,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"04n","description":"broken clouds","main":"Clouds","id":803}],"name":"Beersheba","cod":200,"main":{"temp":282.693,"temp_min":282.693,"grnd_level":990.17,"humidity":95,"pressure":990.17,"sea_level":1032.33,"temp_max":282.693},"clouds":{"all":80},"id":295530,"sys":{"country":"IL","sunrise":1450413216,"sunset":1450449655,"message":0.0032},"base":"cmc stations","wind":{"deg":162.003,"speed":1.96}}

@@ -3,87 +3,94 @@ package com.company;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import java.io.*;
 import java.util.ArrayList;
 
 public class CityHistory {
 
-    ArrayList<City> history = new ArrayList<>(3);
-    String cityName="";
-    int count = 0;
-
-    public CityHistory(String cTName) {
-        this.cityName = cTName;
-        createHistoryFromFile();
-    }
+    private ArrayList<City> history = new ArrayList<>();
+    private String cityName="";
+    private int count = 0;
 
     public void createHistoryFromFile(){
-        String readText = readFromFile();
+        String readText = new FileHandle().readFile(getCityName());
         if(readText.length()>1) parseAndInsertCity(readText);
     }
 
     private void parseAndInsertCity(String readText) {
-        int lastReadIndex = 0;
-        count = checkNumberOfHistoryDays(readText);
-        for(int i=0;i<=count;i++) {
-            history.add(i,createCityFromString(readText,lastReadIndex));
-        }
+//        int lastReadIndex = 0;
+//        count = checkNumberOfHistoryDays(readText);
+//        for(int i=0;i<=count;i++) {
+//            history.add(i,createCityFromString(readText,lastReadIndex));
+            setHistory(createCityFromString(readText,0));
+//        }
     }
 
-    private City createCityFromString(String str, int lastReadIndex){
-        City city = null;
+    private ArrayList<City> createCityFromString(String str, int lastReadIndex){
+        ArrayList<City> citiesFromFile = new ArrayList<>();
+        City city;
         while (lastReadIndex != -1) {
-            int formerLastIndx = lastReadIndex;
-            lastReadIndex = str.indexOf("@@@@@@@@@@", lastReadIndex);
-            String toJson = str.substring(formerLastIndx,lastReadIndex);
+            int nextJson = str.indexOf("@@@@@@@@@@", lastReadIndex+1);
+            String toJson="";
+            if(nextJson==(-1)){ toJson = str.substring(lastReadIndex+20);}
+            else {toJson = str.substring(lastReadIndex+20,nextJson);}
             JSONObject json = null;
-            if (lastReadIndex != -1) {
+            if (str.length() != 0) {
                 try {
                     json = (JSONObject)new JSONParser().parse(toJson);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 city = new City(json);
-                count++;
+                citiesFromFile.add(city);
+                setCount(getCount()+1);
+                lastReadIndex = nextJson;
             }
         }
-        return city;
+        return citiesFromFile;
     }
 
-    private int checkNumberOfHistoryDays(String readText) {
-        String parser = "@@@@@@@@@@";
-        int lastIndex = 0;
-        int count = 0;
-        while (lastIndex != -1) {
-            lastIndex = readText.indexOf(parser, lastIndex);
-            if (lastIndex != -1) {
-                count++;
-                lastIndex += parser.length();
+    public ArrayList<City> getHistory() {
+        return history;
+    }
+
+    public void setHistory(ArrayList<City> history) {
+        this.history = history;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public CityHistory(String cTName) {
+        setCityName(cTName);
+        createHistoryFromFile();
+    }
+
+    @Override
+    public String toString() {
+        if(getCount()==0) return "\nThere is no history for the chosen city!\n";
+        if(getCount()==1)return "\n\nCityHistory of the past day for the chosen city " + getCityName() + ":\n" + getHistory().get(0) + "\n\n";
+        if(getCount()>1) {
+            String ans = "CityHistory of the past " + getCount() + " days for the chosen city: " + getCityName() + "\n";
+            for (int i = 0; i < getCount(); i++) {
+                ans += "City history record #" + (getCount()-i) + ":";
+                ans += getHistory().get(i);
+                ans += "\n\n\n*******************\n\n\n";
             }
+            return ans;
         }
-        return  count;
-    }
-
-    private String readFromFile() {
-        FileReader fileReader;
-            String read = "";
-            if (new File(cityName).exists()) {
-                try {
-                    fileReader = new FileReader(cityName);
-                    BufferedReader br = new BufferedReader(fileReader);
-                    String line;
-                    try {
-                        while ((line = br.readLine()) != null) {
-                            read += line;
-                        }
-                        br.close();
-                    } catch (IOException e) {
-                        System.out.println("Unable to read from file '" + cityName + "'");
-                    }
-                } catch (FileNotFoundException ex) {
-                    System.out.println("Unable to open file '" + cityName + "'");
-                }
-        } else System.out.println("File doesn't exist!!\n");
-        return read;
+        return "";
     }
 }

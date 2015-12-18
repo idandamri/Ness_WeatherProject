@@ -17,16 +17,16 @@ public class ThreadMenu extends Thread {
 //        System.out.println("Running " +  threadName );
 //        try {
         System.out.println("Welcome to World-Wide-Weather");
-        Menu menu = new Menu(2);
+        Menu menu = new Menu(3);
         menu.print_first_menu();
         //int choice=-1;
         while (true) {
             int choice = getNumber();
-            if (choice == 2) {
+            if (choice == 3) {
                 Main.executor.shutdownNow();
                 break;//quit
             }
-            if (choice == 1) handleToCities(menu);
+            if (choice == 1 || choice==2) handleToCities(menu,choice);
             else {
                 // a choice that is not in the menu
                 System.out.println("\nYou choose badly.\nChose again please:");
@@ -41,10 +41,13 @@ public class ThreadMenu extends Thread {
 //        System.out.println("Thread " +  threadName + " exiting.");
     }
 
-    private static void handleToCities(Menu menu) {
+
+
+    private static void handleToCities(Menu menu,int choice) {
         menu.print_second_menu();//choose city
         menu.print_third_menu();//cities
-        menu.handleChosenCity(getNumber());
+        if(choice==1)menu.handleChosenCity(getNumber());
+        if(choice==2)menu.handleCityHistory(getNumber());
     }
 
     private static int getNumber() {

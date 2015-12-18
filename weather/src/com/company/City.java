@@ -51,7 +51,6 @@ public class City {
 
 
     public City(JSONObject jObj){
-        id = (long)jObj.get("id");
         name = (String)jObj.get("name");
         coords = new Coordinations((JSONObject)jObj.get("coord"));
         sundata = new SunData((JSONObject)jObj.get("sys"));
@@ -73,6 +72,6 @@ public class City {
     }
 
     public String toString(){
-        return "\n" + name +", ID = "+ getId() +"\n------------------------\n" + getCoords() + "\n" + getSundata() +"\n"+ getWetherDes() +"\n"+ getWetherData() +"\n"+ getWinData() +"\n"+ getClouds();
+        return "\n" + name +"\n------------------------\n" + getCoords() + "\n" + getSundata() +"\n"+ getWetherDes() +"\n"+ getWetherData() +"\n"+ getWinData() +"\n"+ getClouds();
     }
 }

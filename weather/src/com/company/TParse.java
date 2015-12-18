@@ -31,7 +31,7 @@ public class TParse {
             json = (JSONObject)new JSONParser().parse(jsonText);
             return json;
         }catch (Exception E) {
-            System.out.println(E);
+            System.out.println("ERROR "+E);
         }
         finally {
             is.close();

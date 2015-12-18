@@ -2,26 +2,53 @@ package com.company;
 
 import org.json.simple.JSONObject;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Menu {
 
-    int num_of_choices;
-    WeatherManager wm;
-    static String[] citiesJsonToString = new String[10];
-    static JSONObject[] citesJson = new JSONObject[10];
+    private int num_of_choices;
+    private WeatherManager wm;
+    public static String[] citiesJsonToString = new String[10];
+    public static JSONObject[] citesJson = new JSONObject[10];
+    private ArrayList<String> names = new ArrayList<>();
 
     public Menu(int num_of_choices) {
-        this.num_of_choices = num_of_choices;
-        wm = new WeatherManager();
-        ThreadCityUpdate T2 = new ThreadCityUpdate("Thread-City-Update");
+        setNum_of_choices(num_of_choices);
+//        setWm(new WeatherManager());
+        WeatherManager T2 = new WeatherManager("WeatherManager");
         Main.executor.execute((T2));
+        setNames(getCityNames());
 //        ThreadMenu.appThreads.add(T2);
 //        T2.start();
     }
 
+    private ArrayList<String> getCityNames() {
+        ArrayList<String> ans = new ArrayList<>(10);
+        ans.add(0,CitiesEName.BEERSHEBA_City);
+        ans.add(1,CitiesEName.HAIFA_City);
+        ans.add(2,CitiesEName.TELAVIV_City);
+        ans.add(3,CitiesEName.NEWYORK_City);
+        ans.add(4,CitiesEName.MADRID_City);
+        ans.add(5,CitiesEName.BARCELONA_City);
+        ans.add(6,CitiesEName.ROME_City);
+        ans.add(7,CitiesEName.PARIS_City);
+        ans.add(8,CitiesEName.LONDON_City);
+        ans.add(9,CitiesEName.ISTANBUL_City);
+        return ans;
+    }
+
+    public ArrayList<String> getNames() {
+        return names;
+    }
+
+    public void setNames(ArrayList<String> arr) {
+        this.names = arr;
+    }
+
+
+
     public void print_first_menu(){
-        System.out.println("1)Choose a city to view it's weather.\n2)Quit");
+        System.out.println("1)Choose a city to view it's weather.\n2)View city history\n3)Quit");
     }
 
     public void print_second_menu() {
@@ -29,7 +56,8 @@ public class Menu {
     }
 
     public void print_third_menu() {
-        System.out.println("1)Beer-Sheba\t" +
+        System.out.println(
+                "1)Beer-Sheba\t" +
                 "2)Haifa \t" +
                 "3)Tel-Aviv\t" +
                 "4)New-York\t" +
@@ -39,7 +67,8 @@ public class Menu {
                 "8)Paris \t" +
                 "9)London \t" +
                 "10)Istanbul\n" +
-                "11)Return to previous menu\n");
+                "11)Return to previous menu\n"
+        );
     }
 
     public void handleChosenCity(int number) {
@@ -49,8 +78,8 @@ public class Menu {
                     print_first_menu();
                     return;
                 case 1:
-//
-               case 2:
+                    //
+                case 2:
                     //;
                 case 3:
                     //;
@@ -70,6 +99,7 @@ public class Menu {
                     //;
                 default:
                     City c = new City(citesJson[number-1]);
+                    new FileHandle().writeFile(c.getName(),citiesJsonToString[number-1]);
                     System.out.println("\n"+c+"\n\n");
                     print_first_menu();
             }
@@ -78,4 +108,23 @@ public class Menu {
             System.out.println("\nYour choice is not valid.\nChoose again.\n");
         }
     }
+
+    public void handleCityHistory(int number) {
+       if(number== 11) {
+           print_first_menu();
+           return;
+       }
+        else {
+           String cityChosenByNumber = getNames().get(number-1);
+           CityHistory ch = new CityHistory(cityChosenByNumber);
+           System.out.println(ch.toString());
+           print_first_menu();
+           return;
+       }
+    }
+
+    public void setNum_of_choices(int num_of_choices) {
+        this.num_of_choices = num_of_choices;
+    }
+
 }

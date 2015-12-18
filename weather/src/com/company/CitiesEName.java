@@ -12,9 +12,9 @@ public class CitiesEName {
     public static final String LONDON = "http://api.openweathermap.org/data/2.5/weather?q=London,GB&appid=39e0a559d0f020121dc206c69f525182";
     public static final String ISTANBUL = "http://api.openweathermap.org/data/2.5/weather?q=Istanbul,TR&appid=39e0a559d0f020121dc206c69f525182";
     /*** For file names***/
-    public static final String BEERSHEBA_City = "Beer-Sheva";
+    public static final String BEERSHEBA_City = "BeerSheba";
     public static final String HAIFA_City = "Haifa";
-    public static final String TELAVIV_City = "Tel-Aviv";
+    public static final String TELAVIV_City = "TelAviv";
     public static final String NEWYORK_City = "New-York";
     public static final String MADRID_City = "Madrid";
     public static final String BARCELONA_City = "Barcelona";
