@@ -5,7 +5,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.ArrayList;
 
-public class CityHistory {
+public class CityHistory extends Thread {
 
     private ArrayList<City> history = new ArrayList<>();
     private String cityName="";

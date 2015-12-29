@@ -14,12 +14,9 @@ public class Menu {
 
     public Menu(int num_of_choices) {
         setNum_of_choices(num_of_choices);
-//        setWm(new WeatherManager());
         WeatherManager T2 = new WeatherManager("WeatherManager");
         Main.executor.execute((T2));
         setNames(getCityNames());
-//        ThreadMenu.appThreads.add(T2);
-//        T2.start();
     }
 
     private ArrayList<String> getCityNames() {
@@ -30,7 +27,7 @@ public class Menu {
         ans.add(3,CitiesEName.NEWYORK_City);
         ans.add(4,CitiesEName.MADRID_City);
         ans.add(5,CitiesEName.BARCELONA_City);
-        ans.add(6,CitiesEName.ROME_City);
+        ans.add(6,CitiesEName.TOKYO_City);
         ans.add(7,CitiesEName.PARIS_City);
         ans.add(8,CitiesEName.LONDON_City);
         ans.add(9,CitiesEName.ISTANBUL_City);
@@ -115,6 +112,7 @@ public class Menu {
            return;
        }
         else {
+           //CityHistory - thread??
            String cityChosenByNumber = getNames().get(number-1);
            CityHistory ch = new CityHistory(cityChosenByNumber);
            System.out.println(ch.toString());

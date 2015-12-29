@@ -1,6 +1,9 @@
 @@@@@@@@@@
-18.12.2015
-{"dt":1450401088,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"04n","description":"broken clouds","main":"Clouds","id":803}],"name":"Beersheba","cod":200,"main":{"temp":282.693,"temp_min":282.693,"grnd_level":990.17,"humidity":95,"pressure":990.17,"sea_level":1032.33,"temp_max":282.693},"clouds":{"all":80},"id":295530,"sys":{"country":"IL","sunrise":1450413216,"sunset":1450449655,"message":0.0032},"base":"cmc stations","wind":{"deg":162.003,"speed":1.96}}
+29.12.2015
+{"dt":1451387010,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"01d","description":"Sky is Clear","main":"Clear","id":800}],"name":"Beersheba","cod":200,"main":{"temp":288.606,"temp_min":288.606,"grnd_level":986.77,"humidity":80,"pressure":986.77,"sea_level":1028.02,"temp_max":288.606},"clouds":{"all":0},"id":295530,"sys":{"country":"IL","sunrise":1451363926,"sunset":1451400426,"message":0.0024},"base":"cmc stations","wind":{"deg":117.504,"speed":2.06}}
 @@@@@@@@@@
-18.12.2015
-{"dt":1450401088,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"04n","description":"broken clouds","main":"Clouds","id":803}],"name":"Beersheba","cod":200,"main":{"temp":282.693,"temp_min":282.693,"grnd_level":990.17,"humidity":95,"pressure":990.17,"sea_level":1032.33,"temp_max":282.693},"clouds":{"all":80},"id":295530,"sys":{"country":"IL","sunrise":1450413216,"sunset":1450449655,"message":0.0032},"base":"cmc stations","wind":{"deg":162.003,"speed":1.96}}
+29.12.2015
+{"dt":1451387010,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"01d","description":"Sky is Clear","main":"Clear","id":800}],"name":"Beersheba","cod":200,"main":{"temp":288.606,"temp_min":288.606,"grnd_level":986.77,"humidity":80,"pressure":986.77,"sea_level":1028.02,"temp_max":288.606},"clouds":{"all":0},"id":295530,"sys":{"country":"IL","sunrise":1451363926,"sunset":1451400426,"message":0.0024},"base":"cmc stations","wind":{"deg":117.504,"speed":2.06}}
+@@@@@@@@@@
+28.12.2015
+{"dt":1451387777,"coord":{"lon":34.79,"lat":31.25},"weather":[{"icon":"01d","description":"Sky is Clear","main":"Clear","id":800}],"name":"Beersheba","cod":200,"main":{"temp":288.606,"temp_min":288.606,"grnd_level":986.77,"humidity":80,"pressure":986.77,"sea_level":1028.02,"temp_max":288.606},"clouds":{"all":0},"id":295530,"sys":{"country":"IL","sunrise":1451363926,"sunset":1451400426,"message":0.0024},"base":"cmc stations","wind":{"deg":117.504,"speed":2.06}}

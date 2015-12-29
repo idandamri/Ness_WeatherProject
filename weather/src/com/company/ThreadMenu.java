@@ -34,11 +34,6 @@ public class ThreadMenu extends Thread {
             }
         }
         System.out.println("\nGood Bye...");
-//        }
-//        catch (InterruptedException e) {
-//            System.out.println("Thread " +  threadName + " interrupted.");
-//        }
-//        System.out.println("Thread " +  threadName + " exiting.");
     }
 
 

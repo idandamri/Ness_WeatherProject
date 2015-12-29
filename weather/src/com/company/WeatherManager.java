@@ -31,7 +31,7 @@ public class WeatherManager extends Thread {
             Menu.citesJson[3] = TParse.readJsonFromUrl(CitiesEName.NEWYORK);
             Menu.citesJson[4] = TParse.readJsonFromUrl(CitiesEName.MADRID);
             Menu.citesJson[5] = TParse.readJsonFromUrl(CitiesEName.BARCELONA);
-            Menu.citesJson[6] = TParse.readJsonFromUrl(CitiesEName.ROME);
+            Menu.citesJson[6] = TParse.readJsonFromUrl(CitiesEName.TOKYO);
             Menu.citesJson[7] = TParse.readJsonFromUrl(CitiesEName.PARIS);
             Menu.citesJson[8] = TParse.readJsonFromUrl(CitiesEName.LONDON);
             Menu.citesJson[9] = TParse.readJsonFromUrl(CitiesEName.ISTANBUL);

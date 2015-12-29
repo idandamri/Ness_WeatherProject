@@ -15,13 +15,15 @@ public class FileHandle {
             e.printStackTrace();
         }
         PrintWriter pw = new PrintWriter(fw);
-        LocalDate nowDate = LocalDate.now();
-        String currFile = readFile(city);
-        currFile = updateFile(currFile);
+        LocalDate nowDate = LocalDate.now();//now date
+        String currFile = readFile(city);//file read
+        System.out.println("\n******************\ncurrFile is "+currFile);
+        currFile = updateFile(currFile);//updating three days history
+        System.out.println("\n******************\ncurrFile is updated: "+currFile);
         LocalDate[] filesDates = getDatesFromFile(currFile);
         LocalDate now = LocalDate.now();
         String toFile = currFile;
-        toFile = addNewLineDel(toFile);
+        toFile = addNewLineDel(toFile);//addin \n to string from file
         try {//erase text from existing file
             fw = new FileWriter(city + ".txt", false);
         } catch (IOException e) {
@@ -32,6 +34,8 @@ public class FileHandle {
             pw.print(nowDate.getDayOfMonth() + "." + nowDate.getMonth().getValue() + "." + nowDate.getYear() + "\n");
             pw.print(JsonString /*+ "\n"*/);
         }
+        System.out.println("\n******************\ncurrFile is "+currFile);
+        System.out.println("\n******************\ntoFile is "+currFile);
         pw.print(toFile);
         pw.close();
     }
@@ -71,7 +75,7 @@ public class FileHandle {
         while (num > 0) {
             i = file.indexOf("@@@@@@@@@@");
             toSubStringIndx += i + 10;
-            if (i != (-1)) {
+            if (i != (-1)) {//checking if date is good
                 String date = file.substring(10 + i, 20 + i);
                 int year = Integer.valueOf(date.substring(6));
                 int month = Integer.valueOf(date.substring(3, 5));
